@@ -30,4 +30,4 @@ echo $DATABASE_HOST
 - `$DATABASE_DB`
 
 - if `$DATABASE_PORT` is not present, guessed from `$DATABASE_SCHEME` (only available for MySQL and Postgres)
-### Supported envs
+
