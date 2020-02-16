@@ -42,10 +42,10 @@ func run(output io.Writer, databaseURL string) {
 	}
 
 	if user := dbURL.User; user != nil {
-		fmt.Fprintf(output, "DATABASE_USER=%s\n", user.Username())
+		fmt.Fprintf(output, "export DATABASE_USER=%s\n", user.Username())
 
 		if password, ok := user.Password(); ok {
-			fmt.Fprintf(output, "DATABASE_PASSWORD=%s\n", password)
+			fmt.Fprintf(output, "export DATABASE_PASSWORD=%s\n", password)
 		}
 	}
 
@@ -60,8 +60,8 @@ func run(output io.Writer, databaseURL string) {
 		}
 	}
 
-	fmt.Fprintf(output, "DATABASE_SCHEME=%s\n", dbURL.Scheme)
-	fmt.Fprintf(output, "DATABASE_HOST=%s\n", dbURL.Hostname())
-	fmt.Fprintf(output, "DATABASE_PORT=%s\n", port)
-	fmt.Fprintf(output, "DATABASE_DB=%s\n", strings.TrimLeft(dbURL.Path, "/"))
+	fmt.Fprintf(output, "export DATABASE_SCHEME=%s\n", dbURL.Scheme)
+	fmt.Fprintf(output, "export DATABASE_HOST=%s\n", dbURL.Hostname())
+	fmt.Fprintf(output, "export DATABASE_PORT=%s\n", port)
+	fmt.Fprintf(output, "export DATABASE_DB=%s\n", strings.TrimLeft(dbURL.Path, "/"))
 }
